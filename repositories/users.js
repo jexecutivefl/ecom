@@ -36,6 +36,9 @@ class UsersRepository {
         records.push(attrs);
         // write the updated records array back to this.filename
         await this.writeAll(records);
+
+        //return attributes
+        return attrs;
     }
     async writeAll(records) {
         //todo: change null to custom function that checks and changes the string
@@ -87,11 +90,14 @@ class UsersRepository {
     }
 }
 
-const test = async () => {
-    const repo = new UsersRepository('users.json');
-    const user = await repo.getOneBy({password: 'aasdf22222'});
+module.exports = new UsersRepository('users.json');
 
-    console.log(user);
-}
-test();
+///////////////////////////////TEST CODE//////////////////////////
+// const test = async () => {
+//     const repo = new UsersRepository('users.json');
+//     const user = await repo.getOneBy({password: 'aasdf22222'});
+//
+//     console.log(user);
+// }
+// test();
 
